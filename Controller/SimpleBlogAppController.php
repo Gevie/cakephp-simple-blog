@@ -19,5 +19,12 @@ App::uses('AppController', 'Controller');
  * @since SimpleBlog 0.1
  */
 class SimpleBlogAppController extends AppController {
-
+	
+	/**
+	 * Components
+	 * 
+	 * @var array 
+	 */
+	public $components = array('Paginator');
+	
 }

@@ -13,6 +13,11 @@
  */
 
 /**
+ * Posts Settings
+ */
+Configure::write('SB.PaginationLimit', 10);
+
+/**
  * Author Configuration
  */
 Configure::write('SB.EnableAuthor', true);

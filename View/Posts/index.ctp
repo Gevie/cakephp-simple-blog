@@ -1,1 +1,1 @@
-Test
+<?php pr($posts); ?>

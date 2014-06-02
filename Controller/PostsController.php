@@ -26,9 +26,15 @@ class PostsController extends SimpleBlogAppController {
 	 * @return void
 	 */
 	public function index() {
-		// do nothing yet
+		$this->paginate = $this->Post->paginationList();
+		$this->set('posts', $this->paginate());
 	}
-	
+
+	/**
+	 * View a specific blog post by its slug
+	 * 
+	 * @param type $slug
+	 */
 	public function view($slug = null) {
 		$this->set('post', $this->Post->findBySlug($slug, true));
 	}

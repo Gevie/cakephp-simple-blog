@@ -116,4 +116,29 @@ class Post extends SimpleBlogAppModel {
 		
 		return $post;
 	}
+
+	/**
+	 * Produces pagination settings for the posts index method
+	 * 
+	 * @param bool $published If set to true, only list published posts
+	 * @return array The paginate settings for the controller method
+	 */
+	public function paginationList($published = true) {
+		$conditions = ($published === true) ? array('Post.published' => 1) : array();
+		$contain = array();
+		
+		if(Configure::read('SB.EnableAuthor') === true)
+			$contain[Configure::read('SB.AuthorSettings.alias')] = $this->_containAuthor();
+		
+		$paginate = array(
+			'contain' => $contain,
+			'conditions' => $conditions,
+			'limit' => Configure::read('SB.PaginationLimit'),
+			'order' => array(
+				'Post.created' => 'ASC'
+			)
+		);
+		
+		return $paginate;
+	}
 }
